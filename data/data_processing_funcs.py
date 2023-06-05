@@ -64,16 +64,16 @@ def parse_subtable_metastr(one_json_dict, train_special_token_dict):
     return ordered_cell_list
 
 def find_first_reference_sentence(one_json_dict):
-    annotation_list = one_json_dict['sentence_annotations']
+    annotation_dict = one_json_dict['sentence_annotations']
     references = []
     original_references = []
     length_list = []
-    for item in annotation_list:
-        one_final_sentence = ' '.join(word_tokenize(item['final_sentence']))
+    for final_sent in annotation_dict["final_sentence"]:
+        one_final_sentence = ' '.join(word_tokenize(final_sent))
         one_len = len(one_final_sentence.split())
         length_list.append(one_len)
         references.append(one_final_sentence)
-        original_references.append(item['final_sentence'])
+        original_references.append(final_sent)
     return references[0], original_references[0]
 
 def process_one_json_dict(one_json_dict, special_token_dict):

@@ -1,10 +1,10 @@
 import sys
 import json
 import progressbar
-from data_processing_funcs import *
-from text_processing_funcs import *
+from .data_processing_funcs import *
+from .text_processing_funcs import *
 
-def load_special_tokens(special_token_path, min_cnt):
+def load_special_tokens(special_token_path, min_cnt=10):
     special_token_list, special_token_dict = [], {}
     with open(special_token_path, 'r', encoding = 'utf8') as i:
         lines = i.readlines()

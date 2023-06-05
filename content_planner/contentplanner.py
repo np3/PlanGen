@@ -1,6 +1,6 @@
 import torch
 from torch import nn
-from dynamic_crf_layer import DynamicCRF
+from .dynamic_crf_layer import DynamicCRF
 from torch.nn import CrossEntropyLoss
 
 train_fct = CrossEntropyLoss()
@@ -95,7 +95,7 @@ class ContentPlanner(nn.Module):
         self.embed_dim = self.model.config.hidden_size
         self.pad_token_id = self.tokenizer.convert_tokens_to_ids([PAD_token])[0]
 
-        from utlis import TargetTokenizer
+        from .utlis import TargetTokenizer
         self.targettokenizer = TargetTokenizer(special_token_list, PAD_token)
         self.target_vocab_size = len(self.targettokenizer.vocab)
 
